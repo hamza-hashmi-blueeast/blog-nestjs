@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { catchError, from, map, Observable, switchMap, throwError } from 'rxjs';
 import { AuthService } from 'src/auth/auth.service';
@@ -65,7 +65,7 @@ export class UserService {
         return from(this.userRepository.update(id, user))
     }
 
-    login(user : User): Observable<User>{
+    login(user : User): Observable<string>{
         return from(this.validateUser(user.email, user.password)).pipe(
             switchMap((user:User)=>{
                 if(user){
@@ -73,7 +73,8 @@ export class UserService {
                         map((jwt : string)=> jwt)
                     )
                 }else{
-                    return 'wrong';
+                    return 'wrong credientials';
+                    
                 }
             })
         )
