@@ -1,4 +1,4 @@
-import { CanActivate, ExecutionContext, forwardRef, Inject, Injectable } from "@nestjs/common";
+import { CanActivate, ExecutionContext, Inject, Injectable, forwardRef } from "@nestjs/common";
 
 import { Observable } from "rxjs";
 import { Reflector } from "@nestjs/core";

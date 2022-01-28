@@ -49,6 +49,5 @@ export class UserController {
     UpdateOne(@Param('id') id:string, @Body() user:User):Observable<any>{
         return this.userService.updateOne(Number(id), user)    
     }
-    
 
 }

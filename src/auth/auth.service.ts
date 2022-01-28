@@ -3,7 +3,6 @@ import { Observable, from, of } from 'rxjs';
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { User } from 'src/user/models/user.interface';
-import { userInfo } from 'os';
 
 const bcrypt = require('bcrypt');
 
