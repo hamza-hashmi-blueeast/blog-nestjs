@@ -3,10 +3,10 @@ import { catchError, map, Observable, of, throwError } from 'rxjs';
 import { hasRoles } from 'src/auth/decorators/roles.decorators';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-guards';
 import { RolesGuard } from 'src/auth/guards/roles.guards';
-import { User } from './models/user.interface';
+import { User, UserRole } from './models/user.interface';
 import { UserService } from './user.service';
 
-@Controller('user')
+@Controller('users')
 export class UserController {
 
     constructor(private userService : UserService) { }
@@ -19,7 +19,7 @@ export class UserController {
         )
     }
 
-    @Post()
+    @Post('login')
     login(@Body() user:User):Observable<Object>{
         return this.userService.login(user).pipe(
             map((jwt:string)=>{
@@ -33,11 +33,18 @@ export class UserController {
         return this.userService.findOne(Param.id)
     }
 
-    @hasRoles('Admin')
+    @hasRoles(UserRole.ADMIN)
     @UseGuards(JwtAuthGuard, RolesGuard)
     @Get()
     findAll():Observable<User[]>{
         return this.userService.findAll()
+    }
+
+    @hasRoles(UserRole.ADMIN)
+    @UseGuards(JwtAuthGuard, RolesGuard)
+    @Put(':id')
+    updateUserRole(@Param('id') id:string, @Body() user:User ):Observable<User>{
+        return this.userService.updateUserRole(Number(id), user)
     }
 
     @Delete(':id')
