@@ -4,7 +4,6 @@ import { map, Observable } from "rxjs";
 import { Reflector } from "@nestjs/core";
 import { UserService } from "src/user/user.service";
 import { User } from "src/user/models/user.interface";
-import { hasRoles } from "../decorators/roles.decorators";
 
 @Injectable()
 export class RolesGuard implements CanActivate {
