@@ -1,6 +1,6 @@
 import { AuthModule } from 'src/auth/auth.module';
 import { BlogController } from './blog.controller';
-import { BlogEntryEntity } from './blog_entry';
+import { BlogEntryEntity } from './model/blog_entry';
 import { BlogService } from './blog.service';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';

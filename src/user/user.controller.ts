@@ -72,7 +72,7 @@ export class UserController {
             )
         }
     }
-
+    
     @hasRoles(UserRole.ADMIN)
     @UseGuards(JwtAuthGuard, RolesGuard)
     @Delete(':id')

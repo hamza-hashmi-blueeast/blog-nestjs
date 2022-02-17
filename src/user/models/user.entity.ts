@@ -1,6 +1,6 @@
 import { BeforeInsert, Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
-import { BlogEntryEntity } from "src/blog/blog_entry";
+import { BlogEntryEntity } from "src/blog/model/blog_entry";
 import { UserRole } from "./user.interface";
 
 @Entity()
